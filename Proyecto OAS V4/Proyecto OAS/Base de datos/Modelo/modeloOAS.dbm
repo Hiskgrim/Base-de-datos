@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel>
+<schema name="public" protected="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="cdve" fill-color="#e1e1e1">
+</schema>
+
+<schema name="contratacionDVE" fill-color="#e1e1e1">
+</schema>
+
+<database name="new_database">
+</database>
+
+<table name="estado_contrato">
+	<schema name="public"/>
+	<position x="0" y="496.363"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="character varying"/>
+	</column>
+	<column name="fecha_registro" not-null="true">
+		<type name="date"/>
+	</column>
+	<constraint name="pk_estado_contrato" type="pk-constr" factor="10" table="public.estado_contrato">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="proyecto_curricular">
+	<schema name="public"/>
+	<position x="1728.45" y="894.727"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="pk_proyecto_curricular" type="pk-constr" factor="10" table="public.proyecto_curricular">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ciudad">
+	<schema name="public"/>
+	<position x="939.545" y="73.6363"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="abreviatura">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="pk_ciudad" type="pk-constr" factor="10" table="public.ciudad">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="resolucion">
+	<schema name="public"/>
+	<position x="930.272" y="1035.36"/>
+	<column name="numero">
+		<type name="int4"/>
+	</column>
+	<column name="anio">
+		<type name="int2"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="entidad">
+		<type name="character varying" length="20"/>
+	</column>
+	<constraint name="pk2_resolucion" type="pk-constr" factor="10" table="public.resolucion">
+		<columns names="numero,anio" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="categoria">
+	<schema name="public"/>
+	<position x="1572.36" y="200.454"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="pk_categoria" type="pk-constr" factor="10" table="public.categoria">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="dedicacion">
+	<schema name="public"/>
+	<position x="1212.55" y="168.909"/>
+	<column name="id">
+		<type name="serial"/>
+	</column>
+	<column name="nombre">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="pk_dedicacion" type="pk-constr" factor="10" table="public.dedicacion">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_contrato">
+	<schema name="public"/>
+	<position x="0" y="877.182"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="nombre">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="pk_tipo_contrato" type="pk-constr" factor="100" table="public.tipo_contrato">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="docente">
+	<schema name="public"/>
+	<position x="1376.36" y="651.091"/>
+	<column name="id">
+		<type name="serial"/>
+	</column>
+	<constraint name="pk_docente" type="pk-constr" factor="10" table="public.docente">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="funcionario">
+	<schema name="public"/>
+	<position x="943.545" y="286.364"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="documento" not-null="true">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="direccion" not-null="true">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="telefono_fijo">
+		<type name="character varying" length="7"/>
+	</column>
+	<column name="telefono_celular">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="email" not-null="true">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="primer_nombre" not-null="true">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="segundo_nombre">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="primer_apellido" not-null="true">
+		<type name="character varying"/>
+	</column>
+	<column name="segundo_apellido">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="sexo" not-null="true">
+		<type name="char"/>
+	</column>
+	<column name="fecha_nacimiento" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="activo" not-null="true">
+		<type name="bool"/>
+	</column>
+	<column name="rut" not-null="true">
+		<type name="int4"/>
+	</column>
+	<constraint name="pk_funcionario" type="pk-constr" factor="10" table="public.funcionario">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_contratacion">
+	<schema name="public"/>
+	<position x="30.7274" y="64.7273"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying"/>
+	</column>
+	<constraint name="pk_tipo_contratacion" type="pk-constr" factor="10" table="public.tipo_contratacion">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="facultad">
+	<schema name="public"/>
+	<position x="1728.82" y="1077.73"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="direccion">
+		<type name="character varying" length="30"/>
+	</column>
+	<constraint name="pk_facultad" type="pk-constr" factor="10" table="public.facultad">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="departamento">
+	<schema name="public"/>
+	<position x="1490.55" y="75.9999"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="abreviatura">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="pk_departamento" type="pk-constr" factor="10" table="public.departamento">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="departamento_has_many_ciudad" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="4" constr-indexes="1"
+	 src-table="public.departamento"
+	 dst-table="public.ciudad"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="docente_has_one_funcionario" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="1" constr-indexes="1,2"
+	 src-table="public.funcionario"
+	 dst-table="public.docente"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="facultad_has_many_proyecto_curricular" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="3" constr-indexes="1"
+	 src-table="public.facultad"
+	 dst-table="public.proyecto_curricular"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="ciudad_has_many_funcionario" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="2" constr-indexes="1"
+	 src-table="public.ciudad"
+	 dst-table="public.funcionario"
+	 src-required="true" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="facultad_has_many_resolucion" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="4" constr-indexes="1"
+	 src-table="public.facultad"
+	 dst-table="public.resolucion"
+	 src-required="true" dst-required="false"/>
+
+<table name="clasificacion">
+	<schema name="public"/>
+	<position x="1419.45" y="402.182"/>
+	<column name="id">
+		<type name="serial"/>
+	</column>
+	<column name="fecha_registro">
+		<type name="date"/>
+	</column>
+	<constraint name="pk_clasificacion" type="pk-constr" factor="100" table="public.clasificacion">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="dedicacion_has_many_clasificacion" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="2" constr-indexes="0"
+	 src-table="public.dedicacion"
+	 dst-table="public.clasificacion"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="categoria_has_many_clasificacion" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="3" constr-indexes="1"
+	 src-table="public.categoria"
+	 dst-table="public.clasificacion"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="docente_has_many_clasificacion" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="4" constr-indexes="2"
+	 src-table="public.docente"
+	 dst-table="public.clasificacion"
+	 src-required="true" dst-required="false"/>
+
+<table name="carga_academica">
+	<schema name="public"/>
+	<position x="1736.64" y="741.909"/>
+	<column name="id">
+		<type name="serial"/>
+	</column>
+	<column name="horas_semanales">
+		<type name="int2"/>
+	</column>
+	<constraint name="pk_carga_academica" type="pk-constr" factor="100" table="public.carga_academica">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="proyecto_curricular_has_many_carga_academica" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="2" constr-indexes="0"
+	 src-table="public.proyecto_curricular"
+	 dst-table="public.carga_academica"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="7.68066" y="30.1335"/>
+	</label>
+</relationship>
+
+<relationship name="docente_has_many_carga_academica" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="3" constr-indexes="1"
+	 src-table="public.docente"
+	 dst-table="public.carga_academica"
+	 src-required="true" dst-required="false"/>
+
+<table name="cancelacion_contrato">
+	<schema name="public"/>
+	<position x="416.818" y="271.818"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="fecha_registro">
+		<type name="date"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="200"/>
+	</column>
+	<constraint name="pk_cancelacion_contrato" type="pk-constr" factor="100" table="public.cancelacion_contrato">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="contrato_general">
+	<schema name="public"/>
+	<position x="398.455" y="471.5"/>
+	<column name="numero">
+		<type name="serial"/>
+	</column>
+	<column name="vigencia">
+		<type name="integer"/>
+	</column>
+	<column name="objeto_contrato">
+		<type name="character varying" length="9000"/>
+	</column>
+	<column name="plazo_ejecución">
+		<type name="integer"/>
+	</column>
+	<column name="clausula_registro_presupuestal">
+		<type name="boolean"/>
+	</column>
+	<column name="sede_solicitante">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="dependencia_solicitante">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="numero_solicitud_necesidad">
+		<type name="integer"/>
+	</column>
+	<column name="numero_cdp">
+		<type name="smallint"/>
+	</column>
+	<column name="contratista">
+		<type name="numeric" length="16" precision="0"/>
+	</column>
+	<column name="valor_contrato">
+		<type name="numeric" length="16" precision="2"/>
+	</column>
+	<column name="justificacion">
+		<type name="character varying"/>
+	</column>
+	<column name="descripcion_forma_pago">
+		<type name="character varying"/>
+	</column>
+	<column name="condiciones">
+		<type name="character varying"/>
+	</column>
+	<column name="fecha_registro">
+		<type name="date"/>
+	</column>
+	<column name="tipologia_contrato">
+		<type name="integer"/>
+	</column>
+	<column name="tipo_compromiso">
+		<type name="integer"/>
+	</column>
+	<column name="modalidad_seleccion">
+		<type name="integer"/>
+	</column>
+	<column name="procedimiento">
+		<type name="integer"/>
+	</column>
+	<column name="regimen_contratacion">
+		<type name="integer"/>
+	</column>
+	<column name="tipo_gasto">
+		<type name="integer"/>
+	</column>
+	<column name="toma_gasto_inversion">
+		<type name="integer"/>
+	</column>
+	<column name="origen_presupuesto">
+		<type name="integer"/>
+	</column>
+	<column name="origen_recursos">
+		<type name="integer"/>
+	</column>
+	<column name="tipo_moneda">
+		<type name="integer"/>
+	</column>
+	<column name="valor_contrato_me">
+		<type name="numeric" length="16" precision="3"/>
+	</column>
+	<column name="valor_tasa_cambio">
+		<type name="numeric" length="15" precision="10"/>
+	</column>
+	<column name="tipo_control">
+		<type name="integer"/>
+	</column>
+	<column name="observaciones">
+		<type name="character varying" length="1000"/>
+	</column>
+	<column name="clase_contratista">
+		<type name="integer"/>
+	</column>
+	<column name="convenio">
+		<type name="character varying"/>
+	</column>
+	<column name="numero_constancia">
+		<type name="integer"/>
+	</column>
+	<column name="estado">
+		<type name="boolean"/>
+	</column>
+	<column name="registro_presupuestal">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_contrato_general" type="pk-constr" factor="10" table="public.contrato_general">
+		<columns names="numero" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="contrato_especial">
+	<schema name="public"/>
+	<position x="933.909" y="692"/>
+	<column name="id">
+		<type name="serial"/>
+	</column>
+	<column name="fecha_inicio">
+		<type name="date"/>
+	</column>
+	<column name="vigencia">
+		<type name="int2"/>
+	</column>
+	<constraint name="pk_contrato_especial" type="pk-constr" factor="100" table="public.contrato_especial">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="contrato_general_has_many_contrato_especial" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="3" constr-indexes="1"
+	 src-table="public.contrato_general"
+	 dst-table="public.contrato_especial"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="cancelacion_contrato_has_one_contrato_general" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="3" constr-indexes="1,2"
+	 src-table="public.contrato_general"
+	 dst-table="public.cancelacion_contrato"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="contrato_general_has_many_estado_contrato" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="3" constr-indexes="1"
+	 src-table="public.contrato_general"
+	 dst-table="public.estado_contrato"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="funcionario_has_many_contrato_especial" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="4" constr-indexes="2"
+	 src-table="public.funcionario"
+	 dst-table="public.contrato_especial"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="tipo_contrato_has_many_contrato_general" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="34" constr-indexes="1"
+	 src-table="public.tipo_contrato"
+	 dst-table="public.contrato_general"
+	 src-required="true" dst-required="false"/>
+
+<table name="solicitud_necesidad">
+	<schema name="public"/>
+	<position x="0" y="207"/>
+	<column name="id">
+		<type name="serial"/>
+	</column>
+	<column name="numero">
+		<type name="int2"/>
+	</column>
+	<column name="dependencia">
+		<type name="int2"/>
+	</column>
+	<column name="dependencia_destino">
+		<type name="int2"/>
+	</column>
+	<column name="ordenador_gasto">
+		<type name="int2"/>
+	</column>
+	<column name="unidad_ejecutora">
+		<type name="int2"/>
+	</column>
+	<column name="justificacion">
+		<type name="character varying" length="1000"/>
+	</column>
+	<column name="valor">
+		<type name="int4"/>
+	</column>
+	<column name="fecha_evaluacion">
+		<type name="date"/>
+	</column>
+	<column name="justificacion_rechazo">
+		<type name="character varying" length="1000"/>
+	</column>
+	<constraint name="pk_solicitud_necesidad" type="pk-constr" factor="100" table="public.solicitud_necesidad">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="tipo_contratacion_has_many_solicitud_necesidad" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="10" constr-indexes="1"
+	 src-table="public.tipo_contratacion"
+	 dst-table="public.solicitud_necesidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="resolucion_has_many_contrato_especial" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="5,6" constr-indexes="3"
+	 src-table="public.resolucion"
+	 dst-table="public.contrato_especial"
+	 src-required="false" dst-required="false"/>
+
+<table name="asignatura">
+	<schema name="public"/>
+	<position x="2018" y="570"/>
+	<column name="id">
+		<type name="serial"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="1000"/>
+	</column>
+	<constraint name="pk_asignatura" type="pk-constr" factor="10" table="public.asignatura">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="grupo">
+	<schema name="public"/>
+	<position x="1840" y="374"/>
+	<column name="id">
+		<type name="serial"/>
+	</column>
+	<column name="horario" not-null="true">
+		<type name="character varying"/>
+	</column>
+	<column name="horas_semanales" not-null="true">
+		<type name="int2"/>
+	</column>
+	<constraint name="pk_grupo" type="pk-constr" factor="10" table="public.grupo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="asignatura_has_many_grupo" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="3" constr-indexes="0"
+	 src-table="public.asignatura"
+	 dst-table="public.grupo"
+	 src-required="true" dst-required="false"/>
+
+<table name="docente_grupo">
+	<schema name="public"/>
+	<position x="1715" y="583"/>
+	<column name="id">
+		<type name="serial"/>
+	</column>
+	<column name="horas" not-null="true">
+		<type name="int2"/>
+	</column>
+	<constraint name="pk_docente_grupo" type="pk-constr" factor="10" table="public.docente_grupo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="grupo_has_many_docente_grupo" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="2" constr-indexes="1"
+	 src-table="public.grupo"
+	 dst-table="public.docente_grupo"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="docente_has_many_docente_grupo" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="3" constr-indexes="2"
+	 src-table="public.docente"
+	 dst-table="public.docente_grupo"
+	 src-required="true" dst-required="false"/>
+
+</dbmodel>
