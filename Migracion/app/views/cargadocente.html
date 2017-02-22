@@ -1,0 +1,106 @@
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="page-header"> ASIGNACIÓN - CARGA </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                        <h4 ng-repeat = "funcionario in cargaDocente.funcionarios" ng-if="cargaDocente.docente.IdFuncionario.Id==funcionario.Id" class="intro-text text-center">{{funcionario.PrimerNombre}} {{funcionario.SegundoNombre}} <strong>{{funcionario.PrimerApellido}} {{funcionario.SegundoApellido}}</strong></h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-lg-6">
+                              <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                      <h4 class="intro-text text-center"><strong>Asignaturas</strong></h4>
+                                  </div>
+                                  <div class="panel-body">
+                                      <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ASIGNATURA</th>
+                                                    <th>GRUPO</th>
+                                                    <th>HORARIO</th>
+                                                    <th>INTENSIDAD SEMANAL</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="grupo in cargaDocente.grupos" ng-if="cargaDocente.asignaturaLibre(grupo)">
+                                                    <td ng-repeat="asignatura in cargaDocente.asignaturas" ng-if="asignatura.Id==grupo.IdAsignatura.Id">{{asignatura.Nombre}}</td>
+                                                    <td>{{grupo.Id}}</td>
+                                                    <td>{{grupo.Horario}}</td>
+                                                    <td>{{grupo.HorasSemanales}}</td>
+                                                    <td><button class="form-control" ng-click="cargaDocente.asociarCarga(grupo.Id)">Asociar</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-6">
+                              <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                      <h4 class="intro-text text-center">Carga <strong>Académica</strong></h4>
+                                  </div>
+                                  <div class="panel-body">
+                                      <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ASIGNATURA</th>
+                                                    <th>GRUPO</th>
+                                                    <th>HORARIO</th>
+                                                    <th>INTENSIDAD SEMANAL</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-repeat="grupodocente in cargaDocente.gruposdocentes" ng-if="grupodocente.IdDocente.Id==cargaDocente.idDocente">
+                                                <tr ng-repeat="grupo in cargaDocente.grupos" ng-if="grupo.Id==grupodocente.IdGrupo.Id">
+                                                    <td ng-repeat="asignatura in cargaDocente.asignaturas" ng-if="asignatura.Id==grupo.IdAsignatura.Id">{{asignatura.Nombre}}</td>
+                                                    <td>{{grupo.Id}}</td>
+                                                    <td>{{grupo.Horario}}</td>
+                                                    <td>{{grupo.HorasSemanales}}</td>
+                                                    <td><button class="form-control" ng-click="cargaDocente.eliminarCarga(grupodocente.Id)">Eliminar</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-6">
+                              <button type="submit" class="form-control" ng-click="cargaDocente.regresar()">Guardar cambios realizados</button>
+                          </div>
+                          <div class="col-lg-6">
+                              <button type="submit" class="form-control" ng-click="cargaDocente.generarFormato()">Generar formato de carga</button>
+                          </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="row" id="formato" style="display: none">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="intro-text text-center">Formato <strong>Carga académica</strong></h4>
+                    </div>
+                    <div class="panel-body">
+                        <iframe id="vistaPDF" frameborder='0' width='100%' height='400'> </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="bower_components\pdfmake\build\pdfmake.js"></script>
+    <script type="text/javascript" src="bower_components\pdfmake\build\vfs_fonts.js"></script>
+    <script type="text/javascript" src="scripts/formato.js"></script>
+
+    <div class="panel-footer">
+      Carga - Pregrado (Contratación Docentes Vinculación Especial)
+      <br>
+      2017
+    </div>
+</div>
