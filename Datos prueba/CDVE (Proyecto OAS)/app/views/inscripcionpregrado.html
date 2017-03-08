@@ -1,0 +1,157 @@
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="page-header"> INSCRIPCIÓN - PREGRADO </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="intro-text text-center">Información <strong>Personal</strong></h4>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="row">
+                                <div class="form-group col-lg-4">
+                                    <label>PRIMER NOMBRE</label>
+                                    <input type="text" class="form-control" ng-model="datos.primernombre">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>SEGUNDO NOMBRE</label>
+                                    <input type="text" class="form-control" ng-model="datos.segundonombre">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>PRIMER APELLIDO</label>
+                                    <input type="text" class="form-control" ng-model="datos.primerapellido">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>SEGUNDO APELLIDO</label>
+                                    <input type="text" class="form-control" ng-model="datos.segundoapellido">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>NÚMERO DE DOCUMENTO</label>
+                                    <input type="text" class="form-control" ng-model="datos.documento">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>LUGAR DE EXPEDICIÓN</label>
+                                    <select class="form-control" ng-model = "datos.ciudadexpedicion">
+                                        <option ng-repeat = "ciudad in inscripcionPregrado.ciudades" value={{ciudad.Id}}>{{ciudad.Nombre}}</option>     
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>SEXO</label>
+                                    <select class="form-control" ng-model = "datos.sexo">
+                                        <option value="M">MASCULINO</option>  
+                                        <option value="F">FEMENINO</option>    
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>FECHA DE NACIMIENTO</label>
+                                    <input type="date" class="form-control" ng-model="datos.fechanacimiento">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>RUT</label>
+                                    <input type="number" class="form-control" ng-model="datos.rut">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>TELÉFONO</label>
+                                    <input type="text" class="form-control" ng-model="datos.telefono">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>DIRECCIÓN</label>
+                                    <input type="text" class="form-control" ng-model="datos.direccion">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>EMAIL</label>
+                                    <input type="email" class="form-control" ng-model="datos.email">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>PROYECTO CURRICULAR</label>
+                                    <select class="form-control" ng-model = "datos.proyectocurricular">
+                                        <option ng-repeat = "proyecto in inscripcionPregrado.proyectos" value={{proyecto.Id}}>{{proyecto.Nombre}}</option>     
+                                    </select>
+                                </div> 
+                                <div class="form-group col-lg-4">
+                                    <label>CATEGORÍA</label>
+                                    <select class="form-control" ng-model = "datos.categoria">
+                                        <option ng-repeat = "categoria in inscripcionPregrado.categorias" value={{categoria.Id}}>{{categoria.Nombre}}</option>     
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>DEDICACIÓN</label>
+                                    <select class="form-control" ng-model = "datos.dedicacion">
+                                        <option ng-repeat = "dedicacion in inscripcionPregrado.dedicaciones" value={{dedicacion.Id}}>{{dedicacion.Nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>No. HORAS SEMANALES</label>
+                                    <input type="number" class="form-control" ng-model="datos.horassemanales">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>No. SEMANAS CONTRATADAS</label>
+                                    <input type="number" class="form-control" ng-model="datos.semanas">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>VALOR CONTRATO</label>
+                                    <input type="number" class="form-control" ng-model="datos.valorcontrato">
+                                </div>                              
+                                <div class="col-lg-12">
+                                    <label></label>
+                                    <input type="submit" class="form-control" ng-click="inscripcionPregrado.agregarInformacion(datos)" value="Agregar Información del docente al sistema">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="intro-text text-center">Docentes <strong>Inscritos</strong></h4>
+                    </div>
+                    <div class="panel-body">
+                        <div ng-repeat = "proyecto in inscripcionPregrado.proyectos">
+                            <h4>{{proyecto.Nombre}}</h4>
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>NOMBRE</th>
+                                        <th>CÉDULA</th>
+                                        <th>EXPEDIDA</th>
+                                        <th>CATEGORÍA</th>
+                                        <th>DEDICACIÓN</th>
+                                        <th>HORAS SEMANALES</th>
+                                        <th>PERIODO VINCULACIÓN</th>
+                                        <th>VALOR CONTRATO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat = "datoContrato in inscripcionPregrado.datosContratos[proyecto.Id]">
+                                        <td>{{datoContrato.Nombre}}/td>
+                                        <td>{{datoContrato.Cedula}}</td>
+                                        <td>{{datoContrato.Expedida}}</td>
+                                        <td>{{datoContrato.Categoria}}</td>
+                                        <td>{{datoContrato.Dedicacion}}</td>
+                                        <td>{{datoContrato.HorasSemanales}}</td>
+                                        <td>{{datoContrato.PeriodoVinculacion}}</td>
+                                        <td>{{datoContrato.ValorContrato}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+      Resolución - Pregrado (Contratación Docentes Vinculación Especial)
+      <br>
+      2017
+    </div>
+</div>
+
+</div>

@@ -1,0 +1,163 @@
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="page-header"> RESOLUCIÓN - PREGRADO - HORA CATEDRA HONORARIOS </h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                        <h4 class="intro-text text-center">Docentes <strong>Inscritos</strong></h4>
+                    </div>
+                    <div class="panel-body">
+                        <div ng-repeat = "proyecto in resolucionPregradoHCH.proyectos">
+                            <table class="table table-striped table-bordered table-hover">
+                                <h4>{{proyecto.Nombre}}</h4>
+                                <thead>
+                                    <tr>
+                                        <th>NOMBRE</th>
+                                        <th>CÉDULA</th>
+                                        <th>EXPEDIDA</th>
+                                        <th>CATEGORÍA</th>
+                                        <th>DEDICACIÓN</th>
+                                        <th>HORAS SEMANALES</th>
+                                        <th>PERIODO VINCULACIÓN</th>
+                                        <th>VALOR CONTRATO</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="dato in resolucionPregradoHCH.datos" ng-if="dato.IdProyecto==proyecto.Id">
+                                    <tr>
+                                        <td>{{dato.Nombre}}</td>
+                                        <td>{{dato.Documento}}</td>
+                                        <td>{{dato.CiudadExpedicion}}</td>
+                                        <td>{{dato.CategoriaNombre}}</td>
+                                        <td>{{dato.DedicacionNombre}}</td>
+                                        <td>{{dato.Horas}}</td>
+                                        <td>{{dato.Vigencia}}</td>
+                                        <td>{{dato.Valor}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h4 class="intro-text text-center">Formato <strong>Resoluci&oacute;n</strong></h4>
+                  </div>
+                  <div class="panel-body">
+                          <div class="col-lg-12">
+                              <form role="form">
+                                  <div class="row">
+                                      <div class="form-group col-lg-12">
+                                          <label>Número</label>
+                                          <input type="number" class="form-control" ng-model="resolucionPregradoHCH.numero">
+                                      </div>
+                                  </div>
+                              </form>                               
+                          </div>
+                          <div class="col-lg-4">
+                              <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                      <h4 class="intro-text text-center"><strong>Preámbulo</strong></h4>
+                                  </div>
+                                  <div class="panel-body">
+                                      <form role="form">
+                                          <div class="row">
+                                              <div class="form-group col-lg-12">
+                                                  <textarea rows="10" class="form-control" ng-model="resolucionPregradoHCH.preambulo"></textarea>
+                                              </div>
+                                          </div>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-8">
+                              <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                      <h4 class="intro-text text-center"><strong>Considerando</strong></h4>
+                                  </div>
+                                  <div class="panel-body">
+                                      <form role="form">
+                                          <div class="row">
+                                              <div class="form-group col-lg-12">
+                                                  <textarea rows="10" class="form-control" ng-model="resolucionPregradoHCH.consideracion"></textarea>
+                                              </div>
+                                          </div>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-12">
+                              <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                      <h4 class="intro-text text-center"><strong>Resuelve</strong></h4>
+                                  </div>
+                                  <div class="panel-body">
+                                      <div class="col-lg-4" ng-repeat="i in resolucionPregradoHCH.getNumeros(resolucionPregradoHCH.articulos)">
+                                          <div class="panel panel-default">
+                                              <div class="panel-heading">
+                                                  <h4 class="intro-text text-center">Artículo {{i+1}}</h4>
+                                              </div>
+                                              <div class="panel-body">
+                                                  <form role="form">
+                                                      <div class="row">
+                                                          <div class="form-group col-lg-12">
+                                                              <label>TEXTO</label>
+                                                              <textarea rows="5" class="form-control" ng-model="resolucionPregradoHCH.articulos[i].texto"></textarea>
+                                                              <label>PARAGRAFO</label>
+                                                              <textarea rows="5" class="form-control" ng-model="resolucionPregradoHCH.articulos[i].paragrafo"></textarea>
+                                                          </div>
+                                                          <div class="col-lg-12">
+                                                              <input ng-if="resolucionPregradoHCH.articulos[i].asociado" type="submit" class="form-control" ng-click="asociarTabla(i)" value="Asociar tabla" disabled>
+                                                              <input ng-if="!resolucionPregradoHCH.articulos[i].asociado" type="submit" class="form-control" ng-click="resolucionPregradoHCH.asociarTabla(i)" value="Asociar tabla">
+                                                          </div>
+                                                          <div class="col-lg-12">
+                                                              <input type="submit" class="form-control" ng-click="resolucionPregradoHCH.eliminarArticulo(i)" value="Eliminar artículo">
+                                                          </div>
+                                                      </div>
+                                                  </form>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6 col-lg-offset-3">
+                                          <input type="submit" class="form-control" ng-click="resolucionPregradoHCH.agregarArticulo()" value="Nuevo artículo">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      <button type="submit" class="form-control" ng-click="resolucionPregradoHCH.generarResolucion()">Visualizar resoluci&oacute;n actualizada</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row" id="resolucion" style="display: none">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="intro-text text-center">Vista <strong>Resoluci&oacute;n</strong></h4>
+                    </div>
+                    <div class="panel-body">
+                        <iframe id="vistaPDF" frameborder='0' width='100%' height='400'> </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="bower_components\pdfmake\build\pdfmake.js"></script>
+    <script type="text/javascript" src="bower_components\pdfmake\build\vfs_fonts.js"></script>
+    <script type="text/javascript" src="scripts/conversion.js"></script>
+    <script type="text/javascript" src="scripts/resolucion.js"></script>
+
+    <div class="panel-footer">
+      Resolución - Pregrado (Contratación Docentes Vinculación Especial)
+      <br>
+      2017
+    </div>
+</div>
